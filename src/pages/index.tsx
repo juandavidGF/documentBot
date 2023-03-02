@@ -46,7 +46,7 @@ export default function Home() {
 				<div className={styles.cta}>
 					<p>Price: </p><br/>
 					{user ? (
-						<p>Well send paymen link to your email</p>
+						<p>Well send the payment link to your email</p>
 					) : (
 						<Link href="/api/auth/login">
 							<button className={styles.suscribe}><u>20 USD/month</u> + servers utilization</button>
