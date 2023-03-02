@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { useUser } from '@auth0/nextjs-auth0/client'
 
@@ -9,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-	// const { user, error, isLoading } = useUser();
+	const { user, error, isLoading } = useUser();
 	const [response, setResponse] = useState();
 
 	const handleSubmit = async (e: any) => {
@@ -36,12 +37,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+			{user ? (
+				<Link href="/api/auth/logout"><button>Logout</button></Link>
+			) : null}
 			<main className={styles.main}>
 				<h1>Create Documentation bots</h1>
-				<p>Based in any knowlodgment base</p>
+				<p>Based in any knowledge base</p>
 				<div className={styles.cta}>
 					<p>Price: </p>
-					<button className={styles.suscribe}><u>20 USD/month</u> + servers utilization</button>
+					<Link href="/api/auth/login">
+						<button className={styles.suscribe}><u>20 USD/month</u> + servers utilization</button>
+					</Link>
 				</div>
 				<div className={styles.content}>
 				</div>
